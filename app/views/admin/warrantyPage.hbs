@@ -1,0 +1,37 @@
+<main role="main">
+    <section class="panel important">
+        <h1>Các yêu cầu bảo hành</h1>
+        
+<div class="container table-responsive py-5"> 
+<table class="table table-bordered table-hover">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Tên sản phẩm</th>
+      <th scope="col">Nội dụng bảo hành</th>
+      <th scope="col">Số diện thoại liên hệ</th>
+      <th scope="col">Email liên hệ</th>
+      <th scope="col">Trạng thái bảo hành</th>
+      <th scope="col">Nhân viên tiếp nhận</th>
+      <th scope="col">Gửi yêu cầu</th>
+    </tr>
+  </thead>
+  <tbody>
+      {{#each data}}
+    <tr>
+      <th scope="row"><img width="25px" src="{{this.image}}" alt=""></th>
+      <td>{{this.product}}</td>
+      <td>{{this.content}}</td>
+      <td>{{this.phoneCustomer}}</td>
+      <td>{{this.emailCustomer}}</td>
+      <td>{{this.status}}</td>
+      <td>{{this.staff}}</td>
+      <td><a href="/admin/warranty-send/{{this._id}}"><button class="btn btn-primary">Chọn nhân viên</button></a></td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+</div>
+
+    </section>
+</main>

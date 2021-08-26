@@ -1,0 +1,28 @@
+<div class="login">
+  <div class="login-triangle"></div>
+  
+  <h2 class="login-header">Log in</h2>
+
+  <form action="/user/login/done" method="post" class="login-container">
+    <p><input type="text" name="username" placeholder="Username"></p>
+    <p><input type="password" name="password" placeholder="Password"></p>
+    <p><input type="submit" value="Log in"></p>
+  </form>
+  <div style="display: flex;justify-content: center;">
+    <span>Bạn chưa có tài khoản, <a href="/user/register">Đăng Kí ngay</a></span>
+  </div>
+  <div style="display: flex;justify-content: center;margin-top: 25px;">
+    <a href="/user/auth/facebook/callback">
+            <div class="facebook-before"><i class="fab fa-facebook-f"></i><span class="fontawesome-facebook"></span></div>
+            <button class="facebook">Login Using Facbook</button>
+    </a>
+    </div>
+      <div style="display: flex;justify-content: center;margin-top: 25px;">
+    <a href="/user/auth/google">
+          <button type="button" class="login-with-google-btn" >
+              Sign in with Google
+          </button>
+
+    </a>
+    </div>
+</div>

@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="my-5 border-0">
+        <div class="row">
+            <div class="col-12 col-md-4">
+                <a href="#">
+                    <img src="{{product.image}}" class="img-fluid" alt="placeholder">
+                </a>
+                <button class="btn btn-info"><a style="cursor: pointer;text-decoration: none; color: #fff" href="/user/buy-product/{{product._id}}/form-check-out">Mua Ngay</a></button>
+            </div>
+            <div class="col-12 col-md-8 d-flex flex-column justify-content-center">
+                <a href=""><h4>{{product.name}}/<span class="text-primary">{{product.price}}€ </span></h4></a>
+                <p class="text-muted small">Category : Miscellaneous, Location : Paris, Posted on : 07/02/2018 13:37</p>
+                <p class="short-desc text-justify">
+                        {{product.introducefull}}
+                    <span class="text-muted">[...]</span>
+                </p>
+                <div class="seller">
+                    <a href="#" class="d-inline d-flex flex-row align-items-center">
+                        <img src="http://via.placeholder.com/30" class="img-fluid rounded-circle">
+                        <p class="m-0 p-0 ml-2">Jane Doe <span class="text-muted small">- 4.8/5 (364 votes)</span>
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

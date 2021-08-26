@@ -1,0 +1,31 @@
+<div class="container table-responsive py-5"> 
+<table class="table table-bordered table-hover">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Tên sản phẩm</th>
+      <th scope="col">Nội dụng bảo hành</th>
+      <th scope="col">Số diện thoại liên hệ</th>
+      <th scope="col">Email liên hệ</th>
+      <th scope="col">Trạng thái bảo hành</th>
+      <th scope="col">Nhân viên tiếp nhận</th>
+    </tr>
+  </thead>
+  <tbody>
+      {{#each warrantyInfo}}
+    <tr>
+      <th scope="row">{{index @index 1}}</th> 
+      <td>{{this.product}}</td>
+      <td>{{this.content}}</td>
+      <td>{{this.phoneCustomer}}</td>
+      <td>{{this.emailCustomer}}</td>
+      <td>{{this.status}}</td>
+      <td>{{this.staff}}</td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+<div style="display: flex;justify-content: center;" class="">
+    <a href="/user/create-warranty">tạo thông báo bảo hành</a>
+</div>
+</div>

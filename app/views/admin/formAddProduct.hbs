@@ -1,0 +1,24 @@
+<div class="container">  
+  <form id="add-product" action="/admin/product-manage/add-product/done" method="post">
+    <h3>Thêm Laptop vào cửa hàng</h3>
+    <h4>điền các thông tin</h4>
+    <fieldset>
+      <input placeholder="Tên sản phẩm" name="name" type="text" tabindex="1" required autofocus>
+    </fieldset>
+    <fieldset>
+        <label>Giá bán</label>
+      <input placeholder="Giá sản phẩm" name="price" type="text" tabindex="2" required>
+    </fieldset>
+    <fieldset>
+        <label>Mô tả sản phẩm</label>
+      <input placeholder="Mô tả sản phẩm" name="introduce" type="text" tabindex="3" required>
+    </fieldset>
+    <fieldset>
+    <label>Link ảnh</label>
+      <input placeholder="Link ảnh" name="image" type="text" tabindex="4" required>
+    </fieldset>
+    <fieldset>
+      <button name="submit" type="submit" id="add-submit">Thêm vào</button>
+    </fieldset>
+  </form>
+</div>

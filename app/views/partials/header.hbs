@@ -1,0 +1,132 @@
+ <header>
+    <nav  class="navbar navbar-expand-lg ">
+      <div class="collapse navbar-collapse container" id="navbar-content">
+        <div class="logo">
+            <b><a href="/">Booking</a></b>
+        </div>
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Products</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contacts</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Blogs</a>
+          </li>
+        </ul>
+        {{#if cart}}
+        <div class="dropdown" style="margin-right: 50px;">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+              <a style="text-decoration: none;color: #fff" href="#" id="cart">
+           <i style="color:#fff" class="fa fa-shopping-cart"></i> Cart <span class="fa fa-badge">{{sum.len}}</span>
+         </a>
+          </button>
+        <ul class="dropdown-menu" style="left: -789px;" aria-labelledby="dropdownMenuButton2">
+        {{#each cart}}
+        <li><div style="display: flex;justify-content:space-evenly;" class="dropdown-item" href="#">
+              <img style="margin-right: 20px;" width="40px" src="{{this.product.image}}">
+              <p style="margin-right: 20px;">{{this.product.name}}/ Số lượng: {{this.product.count}}</p>
+              <p>{{this.product.price}}</p>
+              <a href="/cart/remove/{{this.product._id}}" style="margin-left: 10px;text-decoration: none;">X</a>
+          </div>
+        </li>
+        {{/each}}
+          <li><div style="display: flex;justify-content:space-evenly;" class="dropdown-item" href="#">
+                <p> Tổng Tiền: {{sum.total}} VNĐ</p>
+          </div>
+          <li><div style="display: flex;justify-content:space-evenly;" class="dropdown-item" href="#">
+                <a href="/user/buy-product/check-out"> Thanh Toán</a>
+          </div>
+        </li>
+        </ul>
+        </div>
+        {{else}}
+        <div class="dropdown" style="margin-right: 50px;">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+              <a style="text-decoration: none;color: #fff" href="#" id="cart">
+           <i style="color:#fff" class="fa fa-shopping-cart"></i> Cart <span class="fa fa-badge"></span>
+         </a>
+          </button>
+        <ul class="dropdown-menu" style="left:0" aria-labelledby="dropdownMenuButton2">
+        <li><div style="display: flex;justify-content:space-evenly;" class="dropdown-item" href="#">
+              <p>Trống</p>
+          </div>
+        </li>
+        </ul>
+      </div>
+      {{/if}}
+          {{#if account}}
+              {{#if_eq account.role "admin"}} 
+              <div class="">
+                <div class="dropdown">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                  
+                  <svg aria-hidden="true" class="user-icon" width="20px" focusable="false" data-prefix="fas" data-icon="user" class="svg-inline--fa fa-user fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z"></path></svg>/ {{account.name}}
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <li><a class="dropdown-item" href="/admin/admin-page">Đi tới trang quản trị</a></li>
+                    <li><a class="dropdown-item" href="/admin/log-out">Đăng Xuất</a></li>
+                  </ul>
+                </div>
+              </div>
+          {{/if_eq}}
+            {{#if_eq account.role "user"}}
+              <div class="">
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                
+                <svg aria-hidden="true" class="user-icon" width="20px" focusable="false" data-prefix="fas" data-icon="user" class="svg-inline--fa fa-user fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z"></path></svg>/ {{account.name}}
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <li><a class="dropdown-item" href="/user/user-profile">Cài đặt thông tin</a></li>
+                  <li><a class="dropdown-item" href="/user/warranty-info">Thông tin bảo hành</a></li>
+                  <li><a class="dropdown-item" href="/user/order-infor">Giỏ hàng</a></li>
+                  <li><a class="dropdown-item" href="/user/log-out">Đăng Xuất</a></li>
+                </ul>
+              </div>
+            </div>
+            {{/if_eq}}
+              {{#if_eq account.role "seller"}}
+              <div class="">
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                
+                <svg aria-hidden="true" class="user-icon" width="20px" focusable="false" data-prefix="fas" data-icon="user" class="svg-inline--fa fa-user fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z"></path></svg>/ {{account.name}}
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <li><a class="dropdown-item" href="/user/user-profile">Cài đặt thông tin</a></li>
+                  <li><a class="dropdown-item" href="/seller/seller-page">Vào trang quản trị Hóa Đơn</a></li>
+                  <li><a class="dropdown-item" href="/user/log-out">Đăng Xuất</a></li>
+                </ul>
+              </div>
+            </div>    
+            {{/if_eq}}
+            {{#if_eq account.role "warranty staff"}}
+              <div class="">
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                
+                <svg aria-hidden="true" class="user-icon" width="20px" focusable="false" data-prefix="fas" data-icon="user" class="svg-inline--fa fa-user fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z"></path></svg>/ {{account.name}}
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <li><a class="dropdown-item" href="/user/user-profile">Cài đặt thông tin</a></li>
+                  <li><a class="dropdown-item" href="/warranty-staff/warranty-page">Vào trang quản trị bảo hành</a></li>
+                  <li><a class="dropdown-item" href="/user/log-out">Đăng Xuất</a></li>
+                </ul>
+              </div>
+            </div>
+            {{/if_eq}}
+        {{else}}
+        <a class="nav-link" href="/user/login">Đăng nhập</a>
+        {{/if}}
+      </div>
+
+    </nav>
+  </header>

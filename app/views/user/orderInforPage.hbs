@@ -1,0 +1,18 @@
+<div class="container" style="padding: 50px">
+    <h1>Tất cả Đơn hàng bạn đã đặt</h1>
+    <br>
+<div class="row">
+{{#each orders}}
+<div class="col-lg-4">
+<div class="card"  style="margin-left: 50px;padding: 25px">
+  <img src="{{this.imageProduct}}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{this.product}}</h5>
+    <p class="card-text">{{this.totalMoney}}</p>
+    <p class="card-text">Trạng thái: {{this.status}}</p>
+  </div>
+</div>
+</div>
+{{/each}}
+</div>
+</div>

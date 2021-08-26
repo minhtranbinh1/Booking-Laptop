@@ -1,0 +1,37 @@
+<div class="container-fluid px-1 py-5 mx-auto">
+    <div class="row d-flex justify-content-center">
+        <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
+            <h3>THÔNG TIN ĐƠN HÀNG</h3>
+            <div class="card" style="padding: 50px;">
+                <h5 class="text-center mb-4">vui lòng điền đầy đủ các thông tin phía dưới</h5>
+                <form action="/user/buy-product/{{product._id}}/done" method="post"class="form-card" >
+                    <div class="row justify-content-between text-left">
+                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Họ và Tên<span class="text-danger"> *</span></label> <input type="text" name="customer" value="{{user.name}}"  placeholder="Enter your first name" onblur="validate(1)"> </div>
+                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Số điện thoại<span class="text-danger"> *</span></label> <input type="text" name="phone" value="{{user.phone}}" placeholder="Enter your last name" onblur="validate(2)"> </div>
+                    </div>
+                    <div class="row justify-content-between text-left">
+                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Email<span class="text-danger"> *</span></label> <input type="text" name="email" value="{{user.email}}" id="email" name="email" placeholder="" onblur="validate(3)"> </div>
+                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Địa chỉ nhận hàng<span class="text-danger"> *</span></label> <input type="text" name="address" value="{{user.address}}"  placeholder="" onblur="validate(4)"> </div>
+                    </div>
+                    <div class="row justify-content-between text-left">
+                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Sản phẩm mua<span class="text-danger"> </span></label> <input type="text" id="job" name="product" value="{{product.name}}" onblur="validate(5)" readonly> </div>
+                        {{#if_eq account.type 'Khách hàng thân quen'}}
+                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Tổng Tiền (Khách hàng thân quen, được giảm 30%)<span class="text-danger"> </span></label> <input type="text" id="job" name="totalMoney" value="{{mutil product.price 0.3}}" onblur="validate(5)" readonly> </div>
+                        {{else}}
+                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Tổng Tiền<span class="text-danger"> </span></label> <input type="text" id="job" name="totalMoney" value="{{int product.price}}" onblur="validate(5)" readonly> </div>
+                        {{/if_eq}}
+                    </div>
+                    <div class="row justify-content-between text-left" style="display: none;">
+                        <div class="form-group col-12 flex-column d-flex"> <label class="form-control-label px-3">Link hình của sản phẩm<span class="text-danger"></span></label> <input type="text" value="{{product.image}}" name="imageProduct" placeholder="" onblur="validate(6)" readonly> </div>
+                    </div>
+                    <div class="row justify-content-between text-left">
+                        <div class="form-group col-12 flex-column d-flex"> <label class="form-control-label px-3">Nhắn thêm<span class="text-danger"></span></label> <input type="text" name="mess" placeholder="" onblur="validate(6)"> </div>
+                    </div>
+                    <div class="row justify-content-center" style="margin-top:15px">
+                        <div class="form-group col-sm-6"> <button type="submit" class="btn-block btn-primary">Đặt hàng</button> </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

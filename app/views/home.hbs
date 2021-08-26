@@ -1,0 +1,33 @@
+<div class="container">
+    {{#each product}}
+    <div class="my-5 border-0">
+        <div class="row">
+            <div class="col-12 col-md-4">
+                <a href="/product/{{this.slug}}">
+                    <img src="{{this.image}}" class="img-fluid" alt="placeholder">
+                </a>
+            </div>
+            <div class="col-12 col-md-8 d-flex flex-column justify-content-center">
+                <a href="/product/{{this.slug}}"><h4>{{this.name}}</a> <br>Giá bán: <span class="text-primary">{{this.price}}VNĐ </span></h4>
+                <p class="text-muted small">Category : Miscellaneous, Location : Paris, Posted on : 07/02/2018 13:37</p>
+                <p class="short-desc text-justify">
+                        {{this.introduce}}
+                    <span class="text-muted">[...]</span>
+                </p>
+                <div class="seller">
+                    <div class="d-inline d-flex flex-row align-items-center button-area">
+                         <button class="btn btn-primary"><a href="/product/{{this.slug}}">Xem thông tin LapTop</a></button>
+                         <a class="add-to-cart" href="/cart/add/{{this._id}}"><button class="btn btn-primary">Thêm vào giỏ</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{/each}}
+</div>
+    
+<script>
+    var addCart = document.querySelectorAll('.add-to-cart')
+    console.log(addCart)
+
+</script>

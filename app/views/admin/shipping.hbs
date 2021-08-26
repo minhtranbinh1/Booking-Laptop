@@ -1,0 +1,45 @@
+<main role="main">
+  <section class="panel important">
+      <h1>Tất cả các đơn hàng</h1>
+    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Khách Hàng/Id Khách hàng</th>
+      <th scope="col">Số điện thoại</th>
+      <th scope="col">email</th>
+      <th scope="col">Địa chỉ</th>
+      <th scope="col">Giá trị hóa đơn</th>
+      <th scope="col">Trạng Thái</th>
+      <th scope="col">Xác nhận</th>
+    </tr>
+  </thead>
+  <tbody>
+      {{#each orders}}
+    <tr>
+      <th scope="row"><img width="25px" src="{{this.imageProduct}}"></th>
+      <td>{{this.customer}}/{{this.idCustomer}}</td>
+      <td>{{this.phone}}</td>
+      <td>{{this.email}}</td>
+      <td>{{this.address}}</td>
+      <td>{{this.totalMoney}}</td>
+      <td>{{this.status}}</td>
+      <td><a href="/admin/order-manage/confirm/{{this._id}}"><button class="status" type="button" class="btn">Thay đổi trạng thái đơn hàng
+</button></a></td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+<p>Có 4 trạng thái: Chưa xử lý, Xác nhận, Đang giao hàng và Đã hoàn thành</p>
+<a href="/admin/order-manage/unconfirmed">Danh sách các đơn hàng chưa xác nhận</a> <br>
+<a href="/admin/order-manage/confirmed">Danh sách các đơn hàng đã xác nhận</a> <br>
+<a href="/admin/order-manage/shipping">Danh sách các đơn hàng đang giao</a> <br>
+<a href="/admin/order-manage/completed">Danh sách các đơn hàng chưa đã hoàn thành</a> <br>
+  </section>
+  </main>
+  <script>
+      var btnStatus = document.querySelectorAll('.status')
+      var form = document.querySelector('#form-update')
+
+      
+  </script>

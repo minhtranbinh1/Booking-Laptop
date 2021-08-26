@@ -1,0 +1,113 @@
+<main role="main">
+  <section class="panel important">
+      <h1>Tất cả các đơn hàng</h1>
+    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Khách Hàng/Id Khách hàng</th>
+      <th scope="col">Số điện thoại</th>
+      <th scope="col">email</th>
+      <th scope="col">Địa chỉ</th>
+      <th scope="col">Giá trị hóa đơn</th>
+      <th scope="col">Trạng Thái</th>
+      <th scope="col">Thời gian đặt hàng</th>
+      <th scope="col">Xác nhận</th>
+      {{#if_eq acc.role 'admin'}}
+      <th scope="col">Đon hàng được thay đổi bởi</th>
+      {{/if_eq}}
+      
+    </tr>
+  </thead>
+  <tbody>
+    {{#if_eq acc.role 'admin'}}
+      {{#each orders}}
+    <tr>
+      <th scope="row"><img width="25px" src="{{this.imageProduct}}"></th>
+      <td>{{this.customer}}/{{this.idCustomer}}</td>
+      <td>{{this.phone}}</td>
+      <td>{{this.email}}</td>
+      <td>{{this.address}}</td>
+      <td>{{this.totalMoney}}<p>VNĐ</td>
+      <td>{{this.status}}</td>
+      <td scope="col">Ngày {{this.day}}-{{this.month}}-{{this.year}}</td>
+      <td><a href="/admin/order-manage/confirm/{{this._id}}"><button class="status" type="button" class="btn">Thay đổi trạng thái đơn hàng
+</button></a></td>
+      <td>{{this.confirmBy}}</td>
+      </tr>
+    {{/each}}
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>Tổng Doanh thu:</td>
+        <td>{{allRevenue}}<p>VNĐ</p></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    {{/if_eq}}
+    {{#if_eq user.role 'seller'}}
+      {{#each orders}}
+    <tr>
+      <th scope="row"><img width="25px" src="{{this.imageProduct}}"></th>
+      <td>{{this.customer}}/{{this.idCustomer}}</td>
+      <td>{{this.phone}}</td>
+      <td>{{this.email}}</td>
+      <td>{{this.address}}</td>
+      <td>{{this.totalMoney}}</td>
+      <td>{{this.status}}</td>
+      <td scope="col">Ngày {{this.day}}-{{this.month}}-{{this.year}}</td>
+      <td><a href="/seller/order-manage/confirm/{{this._id}}"><button class="status" type="button" class="btn">Thay đổi trạng thái đơn hàng
+</button></a></td>
+      </tr>
+    {{/each}}
+    {{/if_eq}}
+  </tbody>
+</table>
+
+<p>Có 4 trạng thái: Chưa xử lý, Xác nhận, Đang giao hàng và Đã hoàn thành</p>
+{{#if_eq acc.role 'admin'}} 
+<form id="turnover" method="POST" action="/admin/order-manage/turnover/" style="display: flex;align-items:center;">
+<label for="">Doanh thu tháng</label>
+<select name="month" id="month" style="width:50px">
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
+  <option value="6">6</option>
+  <option value="7">7</option>
+  <option value="8">8</option>
+  <option value="9">9</option>
+  <option value="10">10</option>
+  <option value="11">11</option>
+  <option value="12">12</option>
+</select>
+Năm
+<select name="year" id="year" style="width:100px">
+  <option value="2021">2021</option>
+  <option value="2020">2020</option>
+</select>
+<button class="btn btn-primary " id="btn-turnover">Xem</button>
+</form>
+ <br>
+<br>
+
+<a href="/admin/order-manage/unconfirmed">Danh sách các đơn hàng chưa xác nhận</a> <br>
+<a href="/admin/order-manage/confirmed">Danh sách các đơn hàng đã xác nhận</a> <br>
+<a href="/admin/order-manage/shipping">Danh sách các đơn hàng đang giao</a> <br>
+<a href="/admin/order-manage/completed">Danh sách các đơn hàng chưa đã hoàn thành</a> <br>
+{{/if_eq}}
+  </section>
+  </main>
+  <script>
+      var form = document.querySelector('#turnover')
+      var btnTurnover = document.querySelector('#btn-turnover')
+      console.log(btnTurnover)
+      var monthValue = document.querySelector('#month').value
+      var yearValue = document.querySelector('#year').value
+      
+  </script>

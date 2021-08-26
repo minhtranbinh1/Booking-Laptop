@@ -1,0 +1,21 @@
+<div class="container">  
+  <form id="contact" method="post" action="/admin/product-manage/edit-product/{{product.slug}}/done?_method=PUT">
+    <h3>Sửa thông tin Laptop</h3>
+    <h4>điền các thông tin cần sửa</h4>
+    <fieldset>
+      <input value="{{product.name}}" placeholder="Tên sản phẩm" name="name" type="text" tabindex="1" required autofocus>
+    </fieldset>
+    <fieldset>
+      <input value="{{product.price}}" placeholder="Giá sản phẩm" name="price" type="text" tabindex="2" required>
+    </fieldset>
+    <fieldset>
+      <input value="{{product.introduce}}" placeholder="Mô tả sản phẩm" name="introduce" type="text" tabindex="3" required>
+    </fieldset>
+        <fieldset>
+      <input value="{{product.image}}" placeholder="Link ảnh" name="image" type="text" tabindex="4" required>
+    </fieldset>
+    <fieldset>
+      <button name="submit" type="submit" id="edit-submit">Sửa</button>
+    </fieldset>
+  </form>
+</div>

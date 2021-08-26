@@ -1,0 +1,160 @@
+{{#if_eq acc.role 'admin'}}
+<main role="main">
+  <section class="panel important">
+    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Khách Hàng/Id Khách hàng</th>
+      <th scope="col">Số điện thoại</th>
+      <th scope="col">email</th>
+      <th scope="col">Địa chỉ</th>
+      <th scope="col">Giá trị hóa đơn</th>
+      <th scope="col">Trạng Thái</th>
+      <th scope="col">Xác nhận</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row"><img width="25px" src="{{order.imageProduct}}"></th>
+      <td>{{order.customer}}/{{order.idCustomer}}</td>
+      <td>{{order.phone}}</td>
+      <td>{{order.email}}</td>
+      <td>{{order.address}}</td>
+      <td>{{order.totalMoney}}</td>
+      <td>
+          <form id="status" method="post">
+            {{#if_eq order.status "Xác nhận"}}   
+            <select name="status">
+                <option value="{{order.status}}">{{order.status}}</option>
+                <option value="Chưa xác nhận">Chưa xác nhận</option>
+                <option value="Đang giao hàng">Đang giao hàng</option>
+                <option value="Đã hoàn thành">Đã hoàn thành</option>
+            </select>
+            {{/if_eq}}
+          {{#if_eq order.status "Chưa xác nhận"}}   
+          <select name="status">
+              <option value="{{order.status}}">{{order.status}}</option>
+              <option value="Xác nhận">Xác nhận</option>
+              <option value="Đang giao hàng">Đang giao hàng</option>
+              <option value="Đã hoàn thành">Đã hoàn thành</option>
+          </select>
+          {{/if_eq}}
+          {{#if_eq order.status "Đang giao hàng"}}   
+          <select name="status">
+              <option value="{{order.status}}">{{order.status}}</option>
+              <option value="Xác nhận">Xác nhận</option>
+              <option value="Chưa xác nhận">Chưa xác nhận</option>
+              <option value="Đã hoàn thành">Đã hoàn thành</option>
+          </select>
+          {{/if_eq}}
+          {{#if_eq order.status "Đã hoàn thành"}}   
+          <select name="status">
+              <option value="{{order.status}}">{{order.status}}</option>
+              <option value="Xác nhận">Xác nhận</option>
+              <option value="Đang giao hàng">Đang giao hàng</option>
+              <option value="Chưa xác nhận">Chưa xác nhận</option>
+          </select>
+          {{/if_eq}}
+          </form>
+        </td>
+      <td><a href="#"><button data-bs-id="{{order._id}}" class="status" type="button" class="btn btn-primary">Xác nhận
+</button></a></td>
+    </tr>
+  </tbody>
+</table>
+<p>Có 4 trạng thái: Chưa xử lý, Xác nhận, Đang giao hàng và Đã hoàn thành</p>
+  </section>
+  
+
+</main>
+<script>
+    var form = document.querySelector('#status')
+    var btn = document.querySelector('.status')
+    btn.onclick = function() {
+        var id = btn.getAttribute('data-bs-id')
+        form.action = `/admin/order-manage/confirm/${id}?_method=PUT`
+        form.submit();
+    }
+</script>
+{{/if_eq}}
+{{#if_eq acc.role 'seller'}}
+<main role="main">
+  <section class="panel important">
+    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Khách Hàng/Id Khách hàng</th>
+      <th scope="col">Số điện thoại</th>
+      <th scope="col">email</th>
+      <th scope="col">Địa chỉ</th>
+      <th scope="col">Giá trị hóa đơn</th>
+      <th scope="col">Trạng Thái</th>
+      <th scope="col">Xác nhận</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row"><img width="25px" src="{{order.imageProduct}}"></th>
+      <td>{{order.customer}}/{{order.idCustomer}}</td>
+      <td>{{order.phone}}</td>
+      <td>{{order.email}}</td>
+      <td>{{order.address}}</td>
+      <td>{{order.totalMoney}}</td>
+      <td>
+          <form id="status" method="post">
+            {{#if_eq order.status "Xác nhận"}}   
+            <select name="status">
+                <option value="{{order.status}}">{{order.status}}</option>
+                <option value="Chưa xác nhận">Chưa xác nhận</option>
+                <option value="Đang giao hàng">Đang giao hàng</option>
+                <option value="Đã hoàn thành">Đã hoàn thành</option>
+            </select>
+            {{/if_eq}}
+          {{#if_eq order.status "Chưa xác nhận"}}   
+          <select name="status">
+              <option value="{{order.status}}">{{order.status}}</option>
+              <option value="Xác nhận">Xác nhận</option>
+              <option value="Đang giao hàng">Đang giao hàng</option>
+              <option value="Đã hoàn thành">Đã hoàn thành</option>
+          </select>
+          {{/if_eq}}
+          {{#if_eq order.status "Đang giao hàng"}}   
+          <select name="status">
+              <option value="{{order.status}}">{{order.status}}</option>
+              <option value="Xác nhận">Xác nhận</option>
+              <option value="Chưa xác nhận">Chưa xác nhận</option>
+              <option value="Đã hoàn thành">Đã hoàn thành</option>
+          </select>
+          {{/if_eq}}
+          {{#if_eq order.status "Đã hoàn thành"}}   
+          <select name="status">
+              <option value="{{order.status}}">{{order.status}}</option>
+              <option value="Xác nhận">Xác nhận</option>
+              <option value="Đang giao hàng">Đang giao hàng</option>
+              <option value="Chưa xác nhận">Chưa xác nhận</option>
+          </select>
+          {{/if_eq}}
+          </form>
+        </td>
+      <td><a href="#"><button data-bs-id="{{order._id}}" class="status" type="button" class="btn btn-primary">Xác nhận
+</button></a></td>
+    </tr>
+  </tbody>
+</table>
+<p>Có 4 trạng thái: Chưa xử lý, Xác nhận, Đang giao hàng và Đã hoàn thành</p>
+  </section>
+  
+
+</main>
+<script>
+    var form = document.querySelector('#status')
+    var btn = document.querySelector('.status')
+    btn.onclick = function() {
+        var id = btn.getAttribute('data-bs-id')
+        form.action = `/seller/order-manage/confirm/${id}?_method=PUT`
+        form.submit();
+    }
+</script>
+{{/if_eq}}

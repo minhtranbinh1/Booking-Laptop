@@ -1,0 +1,70 @@
+<main role="main">
+  <section class="panel important">
+      <h1>Thông tin Bảo Hành</h1>
+    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Sản Phẩm</th>
+      <th scope="col">Khách hàng yêu cầu</th>
+      <th scope="col">Emai của khách hàng</th>
+      <th scope="col">Số điện thoại của khách hàng</th>
+      <th scope="col">Nội dung bảo hành</th>
+      <th scope="col">Note của Admin gửi</th>
+      <th scope="col">Trạng thái</th>
+      <th scope="col">Xác nhận</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row"><img width="25px" src="{{warranty.image}}"></th>
+      <td>{{warranty.product}}</td>
+      <td>{{warranty.customer}}</td>
+      <td>{{warranty.emailCustomer}}</td>
+      <td>{{warranty.phoneCustomer}}</td>
+      <td>{{warranty.content}}</td>
+      <td>{{warranty.note}}</td>
+      <td>
+          <form id="status2" method="post">
+            {{#if_eq warranty.status "Chưa nhận"}}   
+            <select name="status">
+                <option value="{{warranty.status}}">{{warranty.status}}</option>
+                <option value="Xác nhận">xác nhận</option>
+                <option value="Hoàn thành">Hoàn thành</option>
+            </select>
+            {{/if_eq}}
+            {{#if_eq warranty.status "Xác nhận"}}   
+            <select name="status">
+                <option value="{{warranty.status}}">{{warranty.status}}</option>
+                <option value="Chưa nhận">Chưa nhận</option>
+                <option value="Hoàn thành">Hoàn thành</option>
+            </select>
+            {{/if_eq}}
+            {{#if_eq warranty.status "Hoàn thành"}}   
+                <select name="status">
+                    <option value="{{warranty.status}}">{{warranty.status}}</option>
+                    <option value="Chưa nhận">Chưa nhận</option>
+                    <option value="Xác nhận">xác nhận</option>
+                </select>
+            {{/if_eq}}
+            </form>
+
+      </td>
+      <td><a href="#"><button data-bs-id="{{warranty._id}}" class="status" type="button" class="btn btn-primary">Thay đổi trạng thái 
+</button></a></td>
+
+    </tr>
+  </tbody>
+</table>
+  </section>
+  </main>
+ <script>
+    var form = document.querySelector('#status2')
+    var btn = document.querySelector('.status')
+    btn.onclick = function() {
+        var id = btn.getAttribute('data-bs-id')
+        form.action = `/warranty-staff/warranty/${id}/change/done?_method=PUT`
+        form.submit();
+    }
+</script>

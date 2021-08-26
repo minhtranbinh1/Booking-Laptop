@@ -1,0 +1,44 @@
+<main role="main">
+  <section class="panel important">
+      <h1>Thông tin Bảo Hành</h1>
+    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Sản Phẩm</th>
+      <th scope="col">Khách hàng yêu cầu</th>
+      <th scope="col">Emai của khách hàng</th>
+      <th scope="col">Số điện thoại của khách hàng</th>
+      <th scope="col">Nội dung bảo hành</th>
+      <th scope="col">Note của Admin gửi</th>
+      <th scope="col">Trạng thái</th>
+      <th scope="col">Xác nhận</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+      {{#each warranty}}
+    <tr>
+      <th scope="row"><img width="25px" src="{{this.image}}"></th>
+      <td>{{this.product}}</td>
+      <td>{{this.customer}}</td>
+      <td>{{this.emailCustomer}}</td>
+      <td>{{this.phoneCustomer}}</td>
+      <td>{{this.content}}</td>
+      <td>{{this.note}}</td>
+      <td>{{this.status}}</td>
+      <td><a href="/warranty-staff/warranty/{{this._id}}/change"><button  class="status" type="button" class="btn btn-primary">Thay đổi trạng thái 
+</button></a></td>
+
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+  </section>
+  </main>
+  <script>
+      var btnStatus = document.querySelectorAll('.status')
+      var form = document.querySelector('#form-update')
+
+      
+  </script>
